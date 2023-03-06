@@ -1,0 +1,56 @@
+<section>
+  <mat-card>
+    <mat-card-content>Employee</mat-card-content>
+  </mat-card>
+</section>
+<mat-form-field appearance="fill">
+  <mat-label>Enter your name</mat-label>
+  <input matInput
+    placeholder="Employee name"
+    [formControl]="name"
+    [(ngModel)]="employee.name"
+    required
+    (blur)="disableSaveBtn()">
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Enter your surname</mat-label>
+  <input matInput
+    placeholder="Employee surname"
+    [formControl]="surname"
+    [(ngModel)]="employee.surname"
+    required
+    (blur)="disableSaveBtn()">
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Enter your age</mat-label>
+  <input matInput
+    placeholder="Employee age"
+    [formControl]="age"
+    [(ngModel)]="employee.age"
+    type="number"
+    required
+    (blur)="disableSaveBtn()">
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Enter your position</mat-label>
+  <input matInput
+    placeholder="Employee position"
+    [formControl]="position"
+    [(ngModel)]="employee.position"
+    required
+    (blur)="disableSaveBtn()">
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Enter your email</mat-label>
+  <input matInput
+    placeholder="Employee email"
+    [formControl]="email"
+    [(ngModel)]="employee.email"
+    required
+    (blur)="disableSaveBtn()">
+</mat-form-field>
+<div>
+  <button mat-button (click)="saveForm()" matDialogClose [disabled]="isDisabledSaveBtn">Save</button>
+  <button mat-button matDialogClose="">Close</button>
+</div>
+

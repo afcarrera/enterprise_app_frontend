@@ -1,0 +1,44 @@
+<section>
+  <mat-card>
+    <mat-card-content>Department</mat-card-content>
+  </mat-card>
+</section>
+<mat-form-field appearance="fill">
+  <mat-label>Enter your name</mat-label>
+  <input matInput
+    placeholder="Department name"
+    [formControl]="name"
+    [(ngModel)]="department.name"
+    required
+    (blur)="disableSaveBtn()">
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Enter your description</mat-label>
+  <input matInput
+    placeholder="Department description"
+    [formControl]="description"
+    [(ngModel)]="department.description"
+    required
+    (blur)="disableSaveBtn()">
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Enter your phone</mat-label>
+  <input matInput
+    placeholder="Department phone"
+    [formControl]="phone"
+    [(ngModel)]="department.phone"
+    required
+    (blur)="disableSaveBtn()">
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Enter your enterprise</mat-label>
+  <mat-select [(value)]="department.idEnterprise" [formControl]="idEnterprise" (blur)="disableSaveBtn()" required>
+    <mat-option *ngFor="let enterprise of enterprises" [value]="enterprise.id">
+      {{enterprise.name}}</mat-option>
+  </mat-select>
+</mat-form-field>
+<div>
+  <button mat-button (click)="saveForm()" matDialogClose [disabled]="isDisabledSaveBtn">Save</button>
+  <button mat-button matDialogClose="">Close</button>
+</div>
+

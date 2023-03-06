@@ -1,0 +1,50 @@
+<mat-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="departmentFormGroup">
+    <form [formGroup]="departmentFormGroup">
+      <ng-template matStepLabel>Fill out your basic data</ng-template>
+      <mat-form-field appearance="fill" class="example-stepper-form-field" >
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Department name" formControlName="name" required>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="example-stepper-form-field" >
+        <mat-label>Description</mat-label>
+        <input matInput placeholder="Department description" formControlName="description" required>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="example-stepper-form-field" >
+        <mat-label>Enterprise</mat-label>
+        <select matNativeControl formControlName="idEnterprise" name="idEnterprise">
+          <option value="" selected></option>
+          <option *ngFor="let enterprise of enterprises" [value]="enterprise.id">
+            {{enterprise.name}}
+          </option>
+        </select>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="phoneFormGroup" label="Fill out your phone">
+    <form [formGroup]="phoneFormGroup">
+      <mat-form-field appearance="fill" class="example-stepper-form-field" >
+        <mat-label>Number</mat-label>
+        <input matInput formControlName="number" placeholder="Ex. 22966452"
+              required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <p>You are now done.</p>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+      <button mat-button (click)="saveForm()" matDialogClose>Save</button>
+      <button mat-button matDialogClose="">Close</button>
+    </div>
+  </mat-step>
+</mat-stepper>
